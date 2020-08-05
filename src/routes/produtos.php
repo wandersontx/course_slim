@@ -14,6 +14,12 @@ $app->group('/api/v1', function(){
 		return $response->withJson( $produtos );
 	});
 
+	$this->get('/produtos/lista/{id}', function($request, $response, $args){
+		
+		$produto = Produto::findOrFail( $args['id'] );
+		return $response->withJson( $produto );
+	});
+
 	$this->post('/produtos/adiciona', function($request, $response){
 		//Recupera os dados passado no corpo da requisição
 		$dados = $request->getParsedBody();
