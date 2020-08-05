@@ -3,12 +3,17 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 
+
+$app->options('/{routes:.+}', function ($request, $response, $args) {
+    return $response;
+});
+
 // Routes
+require __DIR__ . '/routes/autenticacao.php';
 
-$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
+require __DIR__ . '/routes/produtos.php';
 
-    // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+$app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function($req, $res) {
+    $handler = $this->notFoundHandler; // handle using the default Slim page not found handler
+    return $handler($req, $res);
 });

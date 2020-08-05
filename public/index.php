@@ -1,4 +1,5 @@
 <?php
+//Verifica que a index esta rodando de um servidor
 if (PHP_SAPI == 'cli-server') {
     // To help the built-in PHP dev server, check if the request was actually for
     // something which should probably be served as a static file
@@ -8,6 +9,8 @@ if (PHP_SAPI == 'cli-server') {
         return false;
     }
 }
+
+
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -22,6 +25,9 @@ require __DIR__ . '/../src/dependencies.php';
 
 // Register middleware
 require __DIR__ . '/../src/middleware.php';
+
+//Inicializa a dependência database do arquivo dependencies
+$container->get('database');
 
 // Register routes
 require __DIR__ . '/../src/routes.php';
