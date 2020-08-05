@@ -30,7 +30,7 @@ $schema->create($tabela, function($table){
 	$table->text('descricao');
 	$table->decimal('preco',11,2);
 	$table->string('fabricante',60);
-	$table->date('dt_criacao');
+	$table->timestamps();
 });
 
 //Preenche a tabela
@@ -39,7 +39,8 @@ $database->table($tabela)->insert([
 	'descricao'  => 'Android Oreo - 8.0 Tela 5.7" Octa-Core 1.8 GHz 4G Câmera 12 + 5 MP (Dual Traseira) - Indigo',
 	'preco' 	 => 899.00,
 	'fabricante' => 'Motorola',
-	'dt_criacao' => '2019-10-22'
+	'created_at' => '2019-10-22',
+	'updated_at' => '2019-10-22'
 ]);
 
 $database->table($tabela)->insert([
@@ -47,5 +48,6 @@ $database->table($tabela)->insert([
 	'descricao'  => 'Tela 5.8" IOS 12 4G WI-FI Câmera 12MP - Apple',
 	'preco' 	 => 4999.00,
 	'fabricante' => 'Apple',
-	'dt_criacao' => '2019-10-22'
+	'created_at' => '2019-10-22',
+	'updated_at' => '2019-10-22'
 ]);

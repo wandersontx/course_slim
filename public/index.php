@@ -26,6 +26,9 @@ require __DIR__ . '/../src/dependencies.php';
 // Register middleware
 require __DIR__ . '/../src/middleware.php';
 
+//Inicializa a dependência database do arquivo dependencies
+$container->get('database');
+
 // Register routes
 require __DIR__ . '/../src/routes.php';
 
